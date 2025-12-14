@@ -218,11 +218,11 @@ services:
     environment:
       - SERVER_HOST_NAME=sharespace
     healthcheck:
-      test: ["CMD-SHELL", "MY_IP=\$\$(hostname -i 2>/dev/null | awk '{print \$\$1}') && avahi-resolve -n sharespace.local 2>/dev/null | grep -q \"\$\$MY_IP\""]
-      interval: 60s
-      timeout: 10s
+      test: ["CMD-SHELL", "pgrep avahi-daemon > /dev/null"]
+      interval: 30s
+      timeout: 5s
       retries: 3
-      start_period: 60s
+      start_period: 10s
 
   # Autoheal - Automatically restart unhealthy containers
   autoheal:
