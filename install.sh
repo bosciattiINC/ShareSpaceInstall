@@ -167,7 +167,7 @@ services:
       - sharespace-network
 
   # Main SharedSpace Application
-  chore-app:
+  sharespace-app:
     image: ${DOCKERHUB_IMAGE}
     container_name: sharespace
     restart: unless-stopped
